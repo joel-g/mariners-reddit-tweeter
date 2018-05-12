@@ -27,7 +27,7 @@ def get_reddit_posts(reddit):
   print("Fetching new posts...")
   time.sleep(1)
   posts = []
-  for post in reddit.subreddit('azure').hot(limit=12):
+  for post in reddit.subreddit('mariners').hot(limit=12):
     posts.append(post)
   print("Returning " + str(len(posts)) + " reddit posts")
   return posts
@@ -57,7 +57,7 @@ def tweet(twitter, submission):
   try:
     twitter.update_status(submission.title + " http://reddit.com" + submission.permalink)
     record_already_tweeted(submission.id)
-    print("Tweeted!\n")
+    print("Tweeted about the Mariners!\n")
   except:
     print("I was not able to TWEET!")
     record_already_tweeted(submission.id + "FAILURE")
