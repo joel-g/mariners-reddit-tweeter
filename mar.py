@@ -86,8 +86,6 @@ def follow_users(list_of_ids, twitter):
       print("Couldn't follow this user.")
   print("Followed " + str(count) + " new accounts")
 
-def unfollow_everyone(twitter): 
-
 def main():
   reddit = authenticate_reddit()
   twitter = authenticate_twitter()
