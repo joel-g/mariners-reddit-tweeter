@@ -63,6 +63,31 @@ def tweet(twitter, submission):
     record_already_tweeted(submission.id + "FAILURE")
   time.sleep(2)
   
+def get_mariners_tweets(twitter):
+  new_tweets = twitter.search(q="mariners", count=200, lang="en")
+  print("Returning 200 Mariners tweets")
+  return new_tweets
+
+def get_user_ids(list_of_tweets):
+  user_ids = []
+  for tweet in list_of_tweets:
+    user_ids.append(tweet.user.id)
+  print("Returning user IDs")
+  return user_ids
+
+def follow_users(list_of_ids, twitter):
+  count = 0
+  print("Following new accounts")
+  for user_id in list_of_ids:
+    try:
+      twitter.create_friendship(user_id)
+      count = count + 1
+    except:
+      print("Couldn't follow this user.")
+  print("Followed " + str(count) + " new accounts")
+
+def unfollow_everyone(twitter): 
+
 def main():
   reddit = authenticate_reddit()
   twitter = authenticate_twitter()
@@ -70,6 +95,7 @@ def main():
     for post in get_reddit_posts(reddit):
       if not is_tweeted(post.id):
         tweet(twitter, post)
+        follow_users(get_user_ids(get_mariners_tweets(twitter)), twitter)
         print("Sleeping 5 hours...\n\n")
         time.sleep(18000)
         break
