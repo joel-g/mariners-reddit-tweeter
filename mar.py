@@ -86,6 +86,7 @@ def follow_users(list_of_ids, twitter):
       print("Couldn't follow this user.")
   print("Followed " + str(count) + " new accounts")
 
+<<<<<<< HEAD
 def unfollow_old(twitter):
   print("Unfollowing 100 oldest follows")
   follows_ids = twitter.friends_ids(twitter.me().id)
@@ -93,6 +94,8 @@ def unfollow_old(twitter):
   for i in range(0,99):
     twitter.destroy_friendship(follows_ids[i]) 
 
+=======
+>>>>>>> 2738de4e6c7f230563fdebfa209690f1860746c3
 def main():
   reddit = authenticate_reddit()
   twitter = authenticate_twitter()
