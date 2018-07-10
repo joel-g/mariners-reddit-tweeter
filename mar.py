@@ -86,6 +86,13 @@ def follow_users(list_of_ids, twitter):
       print("Couldn't follow this user.")
   print("Followed " + str(count) + " new accounts")
 
+def unfollow_old(twitter):
+  print("Unfollowing 100 oldest follows")
+  follows_ids = twitter.friends_ids(twitter.me().id)
+  follows_ids.reverse()
+  for i in range(0,199):
+    twitter.destroy_friendship(follows_ids[i]) 
+
 def main():
   reddit = authenticate_reddit()
   twitter = authenticate_twitter()
@@ -94,6 +101,7 @@ def main():
       if not is_tweeted(post.id):
         tweet(twitter, post)
         follow_users(get_user_ids(get_mariners_tweets(twitter)), twitter)
+        unfollow_old(twitter)
         print("Sleeping 5 hours...\n\n")
         time.sleep(18000)
         break
