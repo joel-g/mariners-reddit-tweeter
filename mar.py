@@ -64,8 +64,8 @@ def tweet(twitter, submission):
   time.sleep(2)
   
 def get_mariners_tweets(twitter):
-  new_tweets = twitter.search(q="mariners", count=100, lang="en")
-  print("Returning 100 Mariners tweets")
+  new_tweets = twitter.search(q="mariners", count=50, lang="en")
+  print("Returning 50 Mariners tweets")
   return new_tweets
 
 def get_user_ids(list_of_tweets):
@@ -100,7 +100,7 @@ def main():
     for post in get_reddit_posts(reddit):
       if not is_tweeted(post.id):
         tweet(twitter, post)
-        # follow_users(get_user_ids(get_mariners_tweets(twitter)), twitter)
+        follow_users(get_user_ids(get_mariners_tweets(twitter)), twitter)
         # unfollow_old(twitter)
         print("Sleeping 5 hours...\n\n")
         time.sleep(18000)
