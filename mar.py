@@ -85,6 +85,7 @@ def follow_users(list_of_ids, twitter):
     except:
       print("Couldn't follow this user.")
   print("Followed " + str(count) + " new accounts")
+  return count
 
 def unfollow_old(twitter, x):
   print("Unfollowing " + str(x) + " oldest follows")
@@ -102,8 +103,8 @@ def main():
     for post in get_reddit_posts(reddit):
       if not is_tweeted(post.id):
         tweet(twitter, post)
-        follow_users(get_user_ids(get_mariners_tweets(twitter, 200)), twitter)
-        unfollow_old(twitter, 185)
+        new_followed = follow_users(get_user_ids(get_mariners_tweets(twitter, 200)), twitter)
+        unfollow_old(twitter, new_followed-10)
         print("Sleeping 5 hours...\n\n")
         time.sleep(18000)
         break
