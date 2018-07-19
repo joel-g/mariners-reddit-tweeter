@@ -94,7 +94,7 @@ def unfollow_old(twitter, x):
   for i in range(0,x-1):
     twitter.destroy_friendship(follows_ids[i])
     print(i+1)
-    time.sleep(1)
+    time.sleep(2)
 
 def main():
   reddit = authenticate_reddit()
