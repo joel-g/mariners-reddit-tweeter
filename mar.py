@@ -103,7 +103,7 @@ def main():
     for post in get_reddit_posts(reddit):
       if not is_tweeted(post.id):
         tweet(twitter, post)
-        # new_followed = follow_users(get_user_ids(get_mariners_tweets(twitter, 200)), twitter)
+        new_followed = follow_users(get_user_ids(get_mariners_tweets(twitter, 50)), twitter)
         # unfollow_old(twitter, new_followed-10)
         print("Sleeping 5 hours...\n\n")
         time.sleep(18000)
