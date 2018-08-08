@@ -106,8 +106,8 @@ def main():
         tweet(twitter, post)
         new_followed_count = follow_users(get_user_ids(get_mariners_tweets(twitter, 100)), twitter)
         unfollow_old(twitter, new_followed_count)
-        print("Sleeping 5 hours...\n\n")
-        time.sleep(18000)
+        print("Sleeping 3 hours...\n\n")
+        time.sleep(10800)
         break
 
 if __name__ == '__main__':
