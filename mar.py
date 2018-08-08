@@ -66,7 +66,7 @@ def tweet(twitter, submission):
 def get_mariners_tweets(twitter, x):
   new_tweets = twitter.search(q="mariners", count=x, lang="en")
   baseball_tweets = twitter.search(q="#mlb", count=x, lang="en")
-  print("Returning " + len(new_tweets+baseball_tweets) + " Mariners tweets")
+  print("Returning " + str(len(new_tweets+baseball_tweets)) + " Mariners tweets")
   return new_tweets + baseball_tweets
 
 def get_user_ids(list_of_tweets):
